@@ -1,6 +1,6 @@
 import 'package:chat_app_demo/commons/app_colors.dart';
 import 'package:chat_app_demo/commons/app_images.dart';
-import 'package:chat_app_demo/ui/pages/enter_phone_number/enter_phone_number.dart';
+import 'package:chat_app_demo/ui/pages/enter_phone_number/enter_phone_number_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {

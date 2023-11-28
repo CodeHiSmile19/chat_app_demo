@@ -52,6 +52,7 @@ dependencies:
   isar:
 
   country_code_picker:
+  pinput:
 
 dev_dependencies:
   flutter_test:
