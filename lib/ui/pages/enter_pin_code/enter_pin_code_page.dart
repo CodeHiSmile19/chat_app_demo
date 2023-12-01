@@ -1,8 +1,8 @@
 import 'package:chat_app_demo/commons/app_colors.dart';
-import 'package:chat_app_demo/commons/app_vectors.dart';
+import 'package:chat_app_demo/commons/app_text_styles.dart';
 import 'package:chat_app_demo/ui/pages/enter_user_information/enter_user_information_page.dart';
+import 'package:chat_app_demo/ui/widgets/app_bar/app_bar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pinput/pinput.dart';
 
 class EnterPinCodePage extends StatefulWidget {
@@ -32,11 +32,7 @@ class _EnterPinCodePageState extends State<EnterPinCodePage> {
   final defaultPinTheme = PinTheme(
     width: 24,
     height: 24,
-    textStyle: const TextStyle(
-      fontSize: 32,
-      fontWeight: FontWeight.w700,
-      color: AppColors.textPrimaryColor,
-    ),
+    textStyle: AppTextStyles.primaryS32Bold,
     decoration: BoxDecoration(
       color: AppColors.backgroundGrayColor,
       borderRadius: BorderRadius.circular(24),
@@ -47,23 +43,7 @@ class _EnterPinCodePageState extends State<EnterPinCodePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.whiteColor,
-        elevation: 0,
-        leading: InkWell(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(14),
-            child: SvgPicture.asset(
-              AppVectors.icArrowRight,
-              height: 24,
-              width: 24,
-            ),
-          ),
-        ),
-      ),
+      appBar: const AppBarWidget(),
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
@@ -75,20 +55,14 @@ class _EnterPinCodePageState extends State<EnterPinCodePage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    const Text(
+                    Text(
                       "Enter Code",
-                      style: TextStyle(
-                        color: AppColors.textPrimaryColor,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: AppTextStyles.primaryS24Bold,
                     ),
                     const SizedBox(height: 8),
                     Text(
                       "We have sent you an SMS with the code\nto ${widget.phoneNumber}",
-                      style: const TextStyle(
-                        color: AppColors.textPrimaryColor,
-                      ),
+                      style: AppTextStyles.primaryS14Normal,
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -120,35 +94,31 @@ class _EnterPinCodePageState extends State<EnterPinCodePage> {
                   }
                 },
                 focusedPinTheme: defaultPinTheme.copyWith(
-                    height: 40,
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                    )),
+                  height: 40,
+                  decoration: const BoxDecoration(
+                    color: Colors.transparent,
+                  ),
+                ),
                 submittedPinTheme: defaultPinTheme.copyWith(
-                    height: 40,
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                    )),
+                  height: 40,
+                  decoration: const BoxDecoration(
+                    color: Colors.transparent,
+                  ),
+                ),
                 errorPinTheme: defaultPinTheme.copyWith(
                   height: 40,
                   decoration: const BoxDecoration(
                     color: Colors.transparent,
                   ),
-                  textStyle: const TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w700,
+                  textStyle: AppTextStyles.primaryS32Bold.copyWith(
                     color: Colors.red,
                   ),
                 ),
               ),
               const SizedBox(height: 80),
-              const Text(
+              Text(
                 "Resend Code",
-                style: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: AppTextStyles.primaryS16SemiBold,
               )
             ],
           ),

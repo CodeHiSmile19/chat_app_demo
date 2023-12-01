@@ -1,6 +1,7 @@
-import 'package:chat_app_demo/commons/app_colors.dart';
 import 'package:chat_app_demo/commons/app_images.dart';
+import 'package:chat_app_demo/commons/app_text_styles.dart';
 import 'package:chat_app_demo/ui/pages/enter_phone_number/enter_phone_number_page.dart';
+import 'package:chat_app_demo/ui/widgets/button/primary_button.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -28,55 +29,29 @@ class _SplashPageState extends State<SplashPage> {
                   AppImages.imgSplash,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 48),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 48),
                 child: Text(
                   "Connect easily with your family and friends over countries",
-                  style: TextStyle(
-                    color: AppColors.textPrimaryColor,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: AppTextStyles.primaryS24Bold,
                   textAlign: TextAlign.center,
                 ),
               ),
               const Spacer(),
-              const Text(
+              Text(
                 "Terms & Privacy Policy",
-                style: TextStyle(
-                  color: AppColors.textPrimaryColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: AppTextStyles.primaryS14SemiBold,
               ),
-              InkWell(
-                onTap: (){
+              PrimaryButton(
+                title: "Start Messaging",
+                onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => const EnterPhoneNumberPage(),
                     ),
                   );
                 },
-                child: Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.fromLTRB(24, 16, 24, 20),
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "Start Messaging",
-                      style: TextStyle(
-                        color: AppColors.whiteColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-              )
+              ),
             ],
           ),
         ),

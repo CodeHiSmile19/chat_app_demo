@@ -1,11 +1,8 @@
-import 'package:chat_app_demo/commons/app_images.dart';
-import 'package:chat_app_demo/commons/app_vectors.dart';
 import 'package:chat_app_demo/ui/pages/splash/splash_page.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
