@@ -35,7 +35,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             child: Padding(
               padding: const EdgeInsets.all(14),
               child: SvgPicture.asset(
-                AppVectors.icArrowRight,
+                AppVectors.icArrowLeft,
                 height: 24,
                 width: 24,
               ),
