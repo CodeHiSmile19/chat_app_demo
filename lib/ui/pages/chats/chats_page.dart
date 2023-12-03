@@ -96,14 +96,14 @@ class _ChatsPageState extends State<ChatsPage> {
                     lastTimeOnline: item.lastTimeOnline,
                     mustReadMessageNumber: item.mustReadMessageNumber,
                     status: item.status,
-                    onTap: (){
-                      Navigator.of(context).push(
+                    onTap: () {
+                      /*Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => ConversationPage(
                             userInfo: item,
                           ),
                         ),
-                      );
+                      );*/
                     },
                   );
                 },

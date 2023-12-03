@@ -2,15 +2,18 @@ import 'package:chat_app_demo/commons/app_colors.dart';
 import 'package:chat_app_demo/commons/app_text_styles.dart';
 import 'package:chat_app_demo/ui/pages/enter_user_information/enter_user_information_page.dart';
 import 'package:chat_app_demo/ui/widgets/app_bar/app_bar_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
 class EnterPinCodePage extends StatefulWidget {
   final String phoneNumber;
+  final String? verificationCode;
 
   const EnterPinCodePage({
     Key? key,
     required this.phoneNumber,
+    this.verificationCode,
   }) : super(key: key);
 
   @override
@@ -70,6 +73,7 @@ class _EnterPinCodePageState extends State<EnterPinCodePage> {
               ),
               const SizedBox(height: 48),
               Pinput(
+                length: 6,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 controller: pinController,
                 focusNode: focusNode,
@@ -78,20 +82,9 @@ class _EnterPinCodePageState extends State<EnterPinCodePage> {
                 listenForMultipleSmsOnAndroid: true,
                 defaultPinTheme: defaultPinTheme,
                 separatorBuilder: (index) => const SizedBox(width: 32),
-                validator: (value) {
-                  return value == '2222'
-                      ? null
-                      : 'OTP chưa chính xác. Xin vui lòng nhập lại.';
-                },
                 hapticFeedbackType: HapticFeedbackType.disabled,
                 onCompleted: (pin) {
-                  if (pin == "2222") {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const EnterUserInformationPage(),
-                      ),
-                    );
-                  }
+                  verifyOTP();
                 },
                 focusedPinTheme: defaultPinTheme.copyWith(
                   height: 40,
@@ -122,6 +115,42 @@ class _EnterPinCodePageState extends State<EnterPinCodePage> {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  void verifyOTP() async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithCredential(
+        PhoneAuthProvider.credential(
+          verificationId: widget.verificationCode ?? "",
+          smsCode: pinController.text,
+        ),
+      )
+          .then((value) async {
+        if (value.user != null) {
+          navigateToInputInfoPage(
+            uID: value.user?.uid,
+          );
+        }
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toString()),
+        ),
+      );
+    }
+  }
+
+  void navigateToInputInfoPage({String? uID}) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => EnterUserInformationPage(
+          userId: uID,
+          phoneNumber: widget.phoneNumber,
         ),
       ),
     );

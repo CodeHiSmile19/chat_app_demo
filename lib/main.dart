@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
         CountryLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
     );
   }

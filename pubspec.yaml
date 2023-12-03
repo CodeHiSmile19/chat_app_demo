@@ -41,13 +41,18 @@ dependencies:
   firebase_messaging:
   firebase_core:
   firebase_storage:
+  cloud_firestore:
 
   path_provider:
   permission_handler:
+  file_picker:
+  image_picker:
+  device_info_plus:
 
   flutter_svg:
   flutter_bloc:
   equatable:
+  json_annotation:
 
   isar:
 
@@ -57,6 +62,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  json_serializable:
+  isar_generator:
+  isar_flutter_libs:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -2,6 +2,10 @@ import 'package:chat_app_demo/commons/app_colors.dart';
 import 'package:chat_app_demo/commons/app_images.dart';
 import 'package:chat_app_demo/commons/app_text_styles.dart';
 import 'package:chat_app_demo/commons/app_vectors.dart';
+import 'package:chat_app_demo/global/global_data.dart';
+import 'package:chat_app_demo/services/isar_service.dart';
+import 'package:chat_app_demo/ui/pages/enter_phone_number/enter_phone_number_page.dart';
+import 'package:chat_app_demo/ui/widgets/button/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -33,7 +37,7 @@ class _MenuPageState extends State<MenuPage> {
                 ],
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
@@ -76,6 +80,25 @@ class _MenuPageState extends State<MenuPage> {
                   ),
                 ],
               ),
+            ),
+            const Spacer(),
+            PrimaryButton(
+              title: "Logout",
+              onTap: () async {
+                final isar = IsarService();
+                final users = await isar.getAccount();
+                isar.deleteAccount(users.first);
+                GlobalData.instance.currentUser = null;
+
+                if (mounted) {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => const EnterPhoneNumberPage(),
+                    ),
+                    (Route<dynamic> route) => false,
+                  );
+                }
+              },
             )
           ],
         ),

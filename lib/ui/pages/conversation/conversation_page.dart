@@ -7,11 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ConversationPage extends StatefulWidget {
-  final UserEntity userInfo;
+  final String? userId;
+  final String? userName;
 
   const ConversationPage({
     Key? key,
-    required this.userInfo,
+    this.userId,
+    this.userName,
   }) : super(key: key);
 
   @override
@@ -20,11 +22,9 @@ class ConversationPage extends StatefulWidget {
 
 class _ConversationPageState extends State<ConversationPage> {
   late TextEditingController chatController;
-  late UserEntity userInfo;
 
   @override
   void initState() {
-    userInfo = widget.userInfo;
     chatController = TextEditingController();
     super.initState();
   }
@@ -59,7 +59,7 @@ class _ConversationPageState extends State<ConversationPage> {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    userInfo.fullName ?? "",
+                    widget.userName ?? "",
                     style: AppTextStyles.primaryS16SemiBold,
                   ),
                   const Spacer(),

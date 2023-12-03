@@ -5,7 +5,9 @@ class StringHelper {
       final listName = fullName.split(" ");
 
       for (int i = 0; i < listName.length; i++) {
-        shortName = shortName + listName[i][0];
+        if (listName[i].isNotEmpty) {
+          shortName = shortName + listName[i][0];
+        }
       }
     }
 
