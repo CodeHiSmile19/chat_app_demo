@@ -1,4 +1,4 @@
-import 'package:chat_app_demo/models/entities/authenticate_entity.dart';
+import 'package:chat_app_demo/models/entities/account_entity.dart';
 
 class GlobalData {
   GlobalData._privateConstructor();

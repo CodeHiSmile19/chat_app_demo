@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:chat_app_demo/commons/app_colors.dart';
 import 'package:chat_app_demo/commons/app_images.dart';
 import 'package:chat_app_demo/global/global_data.dart';
-import 'package:chat_app_demo/models/entities/authenticate_entity.dart';
+import 'package:chat_app_demo/models/entities/account_entity.dart';
 import 'package:chat_app_demo/models/isar_database/isar_account_entity.dart';
 import 'package:chat_app_demo/services/fire_storage_service.dart';
 import 'package:chat_app_demo/services/fire_store_storage_service.dart';

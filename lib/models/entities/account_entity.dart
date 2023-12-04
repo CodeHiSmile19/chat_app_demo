@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'authenticate_entity.g.dart';
+part 'account_entity.g.dart';
 
 @JsonSerializable()
 class AccountEntity {

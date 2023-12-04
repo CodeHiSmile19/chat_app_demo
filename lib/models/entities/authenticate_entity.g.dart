@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'authenticate_entity.dart';
+part of 'account_entity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

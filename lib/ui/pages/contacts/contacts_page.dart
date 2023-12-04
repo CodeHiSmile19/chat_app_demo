@@ -2,7 +2,7 @@ import 'package:chat_app_demo/commons/app_colors.dart';
 import 'package:chat_app_demo/commons/app_text_styles.dart';
 import 'package:chat_app_demo/commons/app_vectors.dart';
 import 'package:chat_app_demo/global/global_data.dart';
-import 'package:chat_app_demo/models/entities/authenticate_entity.dart';
+import 'package:chat_app_demo/models/entities/account_entity.dart';
 import 'package:chat_app_demo/models/entities/user_entity.dart';
 import 'package:chat_app_demo/models/enums/load_status.dart';
 import 'package:chat_app_demo/services/fire_storage_service.dart';

@@ -1,7 +1,9 @@
 import 'package:chat_app_demo/commons/app_colors.dart';
 import 'package:chat_app_demo/commons/app_text_styles.dart';
 import 'package:chat_app_demo/commons/app_vectors.dart';
+import 'package:chat_app_demo/global/global_data.dart';
 import 'package:chat_app_demo/models/entities/user_entity.dart';
+import 'package:chat_app_demo/services/fire_storage_service.dart';
 import 'package:chat_app_demo/ui/widgets/text_field/text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,11 +24,16 @@ class ConversationPage extends StatefulWidget {
 
 class _ConversationPageState extends State<ConversationPage> {
   late TextEditingController chatController;
+  final currentUser = GlobalData.instance.currentUser;
 
   @override
   void initState() {
     chatController = TextEditingController();
     super.initState();
+    FireStorageService().getListMessage(
+      senderId: currentUser?.uId ?? '',
+      receiveId: widget.userId ?? '',
+    );
   }
 
   @override
@@ -104,13 +111,23 @@ class _ConversationPageState extends State<ConversationPage> {
                         hintText: "Meesage",
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 12,
-                        right: 16,
-                      ),
-                      child: SvgPicture.asset(
-                        AppVectors.icSend,
+                    InkWell(
+                      onTap: () async {
+                        final fireStoreService = FireStorageService();
+                        await fireStoreService.createMessage(
+                          senderId: currentUser?.uId ?? '',
+                          receiveId: widget.userId ?? '',
+                          content: chatController.text,
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 12,
+                          right: 16,
+                        ),
+                        child: SvgPicture.asset(
+                          AppVectors.icSend,
+                        ),
                       ),
                     ),
                   ],
